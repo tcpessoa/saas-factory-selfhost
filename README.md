@@ -4,6 +4,12 @@ A dead simple, secure infrastructure setup for running multiple SaaS application
 
 NOT PRODUCTION READY, you would need to at least not expose dozzle with DOZZLE_ENABLE_ACTIONS and DOZZLE_ENABLE_SHELL. It's just for demo purposes.
 
+# Diagrams
+
+![diagram](./docs/diagram.jpeg)
+
+![diagram-network](./docs/saas_factory_network_diagram.svg)
+
 ## 🚀 Quick Start (5 minutes)
 
 ### Prerequisites

@@ -1,0 +1,158 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">SaaS Factory Network Architecture</text>
+  
+  <!-- Internet/Users -->
+  <ellipse cx="100" cy="100" rx="80" ry="30" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="100" y="105" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Internet Users</text>
+  
+  <!-- Cloudflare -->
+  <rect x="250" y="70" width="120" height="60" rx="10" fill="#f97316" stroke="#ea580c" stroke-width="2"/>
+  <text x="310" y="95" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Cloudflare</text>
+  <text x="310" y="110" text-anchor="middle" font-size="10" fill="white">Edge Network</text>
+  <text x="310" y="125" text-anchor="middle" font-size="10" fill="white">SSL + DNS</text>
+  
+  <!-- Cloudflare Tunnel -->
+  <rect x="420" y="70" width="100" height="60" rx="8" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="470" y="95" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Cloudflare</text>
+  <text x="470" y="110" text-anchor="middle" font-size="11" fill="white">Tunnel</text>
+  <text x="470" y="125" text-anchor="middle" font-size="9" fill="white">Encrypted</text>
+  
+  <!-- VPS Box -->
+  <rect x="580" y="40" width="580" height="720" rx="15" fill="#e2e8f0" stroke="#64748b" stroke-width="3"/>
+  <text x="870" y="65" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e293b">Hetzner VPS (4GB RAM)</text>
+  
+  <!-- Traefik -->
+  <rect x="620" y="100" width="120" height="80" rx="8" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <text x="680" y="125" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Traefik</text>
+  <text x="680" y="140" text-anchor="middle" font-size="10" fill="white">Reverse Proxy</text>
+  <text x="680" y="155" text-anchor="middle" font-size="10" fill="white">Router</text>
+  <text x="680" y="170" text-anchor="middle" font-size="9" fill="white">Load Balancer</text>
+  
+  <!-- Docker Networks -->
+  <!-- Traefik Network -->
+  <rect x="600" y="220" width="500" height="120" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="610" y="240" font-size="12" font-weight="bold" fill="#92400e">traefik-net</text>
+  
+  <!-- SaaS Apps in Traefik Network -->
+  <rect x="620" y="260" width="90" height="60" rx="5" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="665" y="280" text-anchor="middle" font-size="10" fill="white" font-weight="bold">SaaS App 1</text>
+  <text x="665" y="295" text-anchor="middle" font-size="9" fill="white">Next.js</text>
+  <text x="665" y="310" text-anchor="middle" font-size="9" fill="white">app1.com</text>
+  
+  <rect x="730" y="260" width="90" height="60" rx="5" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="775" y="280" text-anchor="middle" font-size="10" fill="white" font-weight="bold">SaaS App 2</text>
+  <text x="775" y="295" text-anchor="middle" font-size="9" fill="white">Django</text>
+  <text x="775" y="310" text-anchor="middle" font-size="9" fill="white">app2.com</text>
+  
+  <rect x="840" y="260" width="90" height="60" rx="5" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="885" y="280" text-anchor="middle" font-size="10" fill="white" font-weight="bold">SaaS App 3</text>
+  <text x="885" y="295" text-anchor="middle" font-size="9" fill="white">Laravel</text>
+  <text x="885" y="310" text-anchor="middle" font-size="9" fill="white">app3.com</text>
+  
+  <!-- Monitoring Network -->
+  <rect x="600" y="370" width="500" height="140" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="610" y="390" font-size="12" font-weight="bold" fill="#166534">monitoring-net</text>
+  
+  <!-- Monitoring Tools -->
+  <rect x="620" y="410" width="80" height="60" rx="5" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <text x="660" y="430" text-anchor="middle" font-size="10" fill="white" font-weight="bold">Dozzle</text>
+  <text x="660" y="445" text-anchor="middle" font-size="9" fill="white">Log Viewer</text>
+  <text x="660" y="460" text-anchor="middle" font-size="8" fill="white">~20MB</text>
+  
+  <rect x="720" y="410" width="80" height="60" rx="5" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <text x="760" y="430" text-anchor="middle" font-size="10" fill="white" font-weight="bold">Uptime</text>
+  <text x="760" y="445" text-anchor="middle" font-size="10" fill="white">Kuma</text>
+  <text x="760" y="460" text-anchor="middle" font-size="8" fill="white">~50MB</text>
+  
+  <!-- Database Network -->
+  <rect x="600" y="540" width="500" height="140" rx="8" fill="#fce7f3" stroke="#ec4899" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="610" y="560" font-size="12" font-weight="bold" fill="#be185d">database-net</text>
+  
+  <!-- PostgreSQL -->
+  <rect x="620" y="590" width="120" height="70" rx="5" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
+  <text x="680" y="610" text-anchor="middle" font-size="12" fill="white" font-weight="bold">PostgreSQL</text>
+  <text x="680" y="625" text-anchor="middle" font-size="10" fill="white">Shared Instance</text>
+  <text x="680" y="640" text-anchor="middle" font-size="9" fill="white">Multiple DBs</text>
+  <text x="680" y="655" text-anchor="middle" font-size="8" fill="white">~200MB</text>
+  
+  <!-- Database connections -->
+  <text x="770" y="610" font-size="9" fill="#be185d">• app1_db (user: app1_user)</text>
+  <text x="770" y="625" font-size="9" fill="#be185d">• app2_db (user: app2_user)</text>
+  <text x="770" y="640" font-size="9" fill="#be185d">• app3_db (user: app3_user)</text>
+  
+  <!-- Cloudflare Tunnel on VPS -->
+  <rect x="970" y="100" width="100" height="60" rx="5" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="1020" y="120" text-anchor="middle" font-size="10" fill="white" font-weight="bold">Tunnel</text>
+  <text x="1020" y="135" text-anchor="middle" font-size="10" fill="white">Daemon</text>
+  <text x="1020" y="150" text-anchor="middle" font-size="8" fill="white">~30MB</text>
+  
+  <!-- Resource Usage -->
+  <rect x="980" y="600" width="160" height="120" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1"/>
+  <text x="1060" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">Resource Usage</text>
+  <text x="990" y="640" font-size="10" fill="#475569">• PostgreSQL: ~200MB</text>
+  <text x="990" y="655" font-size="10" fill="#475569">• Dozzle: ~20MB</text>
+  <text x="990" y="670" font-size="10" fill="#475569">• Uptime Kuma: ~50MB</text>
+  <text x="990" y="685" font-size="10" fill="#475569">• Tunnel: ~30MB</text>
+  <text x="990" y="700" font-size="10" fill="#16a34a" font-weight="bold">• Available: ~3.7GB</text>
+  
+  <!-- Arrows -->
+  <!-- Internet to Cloudflare -->
+  <path d="M 180 100 L 250 100" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Cloudflare to Tunnel -->
+  <path d="M 370 100 L 420 100" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Tunnel to VPS Tunnel -->
+  <path d="M 520 100 L 580 100 Q 590 100 590 110 L 590 120 Q 590 130 600 130 L 970 130" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- VPS Tunnel to Traefik -->
+  <path d="M 970 140 L 740 140" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Traefik to Apps -->
+  <path d="M 680 180 L 680 220" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Network connections (dashed lines) -->
+  <path d="M 665 320 L 665 370" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 775 320 L 775 370" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 885 320 L 885 370" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  
+  <path d="M 665 320 L 665 540" stroke="#ec4899" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 775 320 L 775 540" stroke="#ec4899" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 885 320 L 885 540" stroke="#ec4899" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#374151"/>
+    </marker>
+  </defs>
+  
+  <!-- Legend -->
+  <rect x="50" y="600" width="200" height="180" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1"/>
+  <text x="150" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">Legend</text>
+  
+  <rect x="60" y="635" width="15" height="10" fill="#f97316"/>
+  <text x="85" y="644" font-size="10" fill="#1e293b">External Services</text>
+  
+  <rect x="60" y="655" width="15" height="10" fill="#22c55e"/>
+  <text x="85" y="664" font-size="10" fill="#1e293b">Core Infrastructure</text>
+  
+  <rect x="60" y="675" width="15" height="10" fill="#3b82f6"/>
+  <text x="85" y="684" font-size="10" fill="#1e293b">SaaS Applications</text>
+  
+  <rect x="60" y="695" width="15" height="10" fill="#f59e0b"/>
+  <text x="85" y="704" font-size="10" fill="#1e293b">Monitoring Tools</text>
+  
+  <rect x="60" y="715" width="15" height="10" fill="#6366f1"/>
+  <text x="85" y="724" font-size="10" fill="#1e293b">Database</text>
+  
+  <path d="M 60 740 L 80 740" stroke="#374151" stroke-width="2"/>
+  <text x="85" y="744" font-size="10" fill="#1e293b">Traffic Flow</text>
+  
+  <path d="M 60 755 L 80 755" stroke="#22c55e" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="85" y="759" font-size="10" fill="#1e293b">Network Connection</text>
+</svg>
