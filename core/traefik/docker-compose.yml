@@ -1,0 +1,46 @@
+services:
+  traefik:
+    image: traefik:v3.4.1
+    container_name: saas-factory-traefik
+    restart: unless-stopped
+    command:
+      # Enable Docker provider
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=saas-factory-traefik-net
+      
+      # Entry points (HTTP ONLY - Cloudflare handles HTTPS)
+      - --entrypoints.web.address=:80
+      
+      # Enable API and dashboard
+      - --api.dashboard=true
+      - --api.insecure=true  # Safe behind Cloudflare
+      
+      # Logging
+      - --log.level=INFO
+      - --accesslog=true
+      
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik_data:/data
+    networks:
+      - traefik-net
+    labels:
+      - "com.docker.compose.project=saas-factory"
+      - "traefik.enable=true"
+      
+      # Dashboard (HTTP only - Cloudflare adds HTTPS)
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.${MAIN_DOMAIN}`)"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.entrypoints=web"
+
+volumes:
+  traefik_data:
+    name: saas-factory-traefik-data
+
+networks:
+  traefik-net:
+    name: saas-factory-traefik-net
+    external: true

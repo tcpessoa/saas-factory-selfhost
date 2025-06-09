@@ -1,0 +1,26 @@
+# Hetzner Cloud API Token (from Hetzner Cloud Console -> Security -> API Tokens)
+hetzner_token = "your_hetzner_api_token_here"
+
+# Cloudflare API Token (from Cloudflare Dashboard -> My Profile -> API Tokens)
+cloudflare_api_token = "your_cloudflare_api_token_here"
+
+# Path to your SSH public key
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
+
+# Your domain name (must be managed by Cloudflare)
+main_domain = "yourdomain.com"
+
+# Cloudflare Zone ID (found in Cloudflare Dashboard -> Domain -> Overview)
+cloudflare_zone_id = "your_cloudflare_zone_id_here"
+
+# More domains
+additional_domains = [
+  # "mynewsaas.com",
+  # "anotherdomain.com"
+]
+
+# Optional: Customize server settings
+server_name     = "saas-factory"
+server_type     = "cx22"      # 2 vCPU, 4GB RAM - perfect for small SaaS factory
+server_location = "fsn1"      # Falkenstein, Germany
+server_image    = "ubuntu-24.04"

@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: saas-factory-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: postgres
+      POSTGRES_MULTIPLE_DATABASES: "shared_db"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "127.0.0.1:5432:5432"  # Only bind to localhost for security
+    networks:
+      - database-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      - "com.docker.compose.project=saas-factory"
+      - "traefik.enable=false"
+
+volumes:
+  postgres_data:
+    name: saas-factory-postgres-data
+
+networks:
+  database-net:
+    name: saas-factory-database-net
+    driver: bridge
+    external: true
+  traefik-net:
+    name: saas-factory-traefik-net
+    driver: bridge
+    external: true

@@ -1,0 +1,60 @@
+services:
+  # Docker log viewer
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: saas-factory-dozzle
+    restart: unless-stopped
+    environment:
+      DOZZLE_NO_ANALYTICS: true
+      DOZZLE_ENABLE_ACTIONS: true
+      DOZZLE_ENABLE_SHELL: true
+      # Uncomment to enable container actions (stop, start, restart). See https://dozzle.dev/guide/actions
+      #
+      # Uncomment to allow access to container shells. See https://dozzle.dev/guide/shell
+      # - DOZZLE_ENABLE_SHELL=true
+      #
+      # Uncomment to enable authentication. See https://dozzle.dev/guide/authentication
+      # - DOZZLE_AUTH_PROVIDER=simple
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - monitoring-net
+      - traefik-net
+    labels:
+      - "com.docker.compose.project=saas-factory"
+      - "traefik.enable=true"
+      - "traefik.http.routers.dozzle.rule=Host(`logs.${MAIN_DOMAIN}`)"
+      - "traefik.http.routers.dozzle.entrypoints=web"
+      - "traefik.http.services.dozzle.loadbalancer.server.port=8080"
+      - "traefik.docker.network=saas-factory-traefik-net"
+      
+  # Uptime and status monitoring
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: saas-factory-uptime-kuma
+    restart: unless-stopped
+    volumes:
+      - uptime_kuma_data:/app/data
+    networks:
+      - monitoring-net
+      - traefik-net
+    labels:
+      - "com.docker.compose.project=saas-factory"
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptime.rule=Host(`status.${MAIN_DOMAIN}`)"
+      - "traefik.http.routers.uptime.entrypoints=web"
+      - "traefik.http.services.uptime.loadbalancer.server.port=3001"
+      - "traefik.docker.network=saas-factory-traefik-net"
+
+volumes:
+  uptime_kuma_data:
+    name: saas-factory-uptime-kuma-data
+
+networks:
+  monitoring-net:
+    name: saas-factory-monitoring-net
+    driver: bridge
+    external: true
+  traefik-net:
+    name: saas-factory-traefik-net
+    external: true
